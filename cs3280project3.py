@@ -19,7 +19,7 @@ def get_port_status(conn):
     if len(sys.argv) < 3 or len(sys.argv) > 4:
         print('Please check your ip address, start_port or' \
              'end_port is inputted correcttly or not')
-        sys.exit() 
+        sys.exit()
     ip_address = sys.argv[1]
     start_port = sys.argv[2]
     end_port = ''
@@ -41,11 +41,11 @@ def main():
         scan_process.start()
         result = parent_conn.recv()
         for key, value in result.items():
-             print("Port ", key, " : ", value)
+            print("Port ", key, " : ", value)
         scan_process.join()
-    except KeyboardInterrupt: 
-        print("KeyboardInterrupt: Exitting Program !!!!") 
-        sys.exit() 
-    
+    except KeyboardInterrupt:
+        print("KeyboardInterrupt: Exitting Program !!!!")
+        sys.exit()
+
 if __name__ == '__main__':
     main()

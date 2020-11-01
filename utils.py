@@ -17,7 +17,7 @@ def scan(ip_address, start_port, end_port):
     int_end_port = int(end_port)
     for port in range(int_start_port, int_end_port + 1):
         listen = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        socket.setdefaulttimeout(1) 
+        socket.setdefaulttimeout(1)
         result = listen.connect_ex((ip_address, port))
         if result == 0:
             key = port

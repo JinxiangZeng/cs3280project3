@@ -16,14 +16,14 @@ class TestUtilsMethods(unittest.TestCase):
     """
     This class used to test methods in scanner
     """
-    def test_One_port_open(self):
+    def test_one_port_open(self):
 
         """Test start port is 50000 and the port is open"""
         dictionary = {}
         listen = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        listen.bind(('127.0.0.1',50000))
+        listen.bind(('127.0.0.1', 50000))
         listen.listen(1)
-        socket.setdefaulttimeout(1) 
+        socket.setdefaulttimeout(1)
         result = listen.connect_ex(('127.0.0.1', 50000))
         if result == 0:
             key = 50000
@@ -34,14 +34,14 @@ class TestUtilsMethods(unittest.TestCase):
             value = False
             dictionary[key] = value
         listen.close()
-        self.assertEqual(dictionary, utils.scan('127.0.0.1', 50000,50000))
+        self.assertEqual(dictionary, utils.scan('127.0.0.1', 50000, 50000))
 
-    def test_One_port_close(self):
+    def test_one_port_close(self):
 
         """Test start port is 50000 and the port is close"""
         dictionary = {}
         listen = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        socket.setdefaulttimeout(1) 
+        socket.setdefaulttimeout(1)
         result = listen.connect_ex(('127.0.0.1', 50000))
         if result == 0:
             key = 50000
@@ -52,7 +52,7 @@ class TestUtilsMethods(unittest.TestCase):
             value = False
             dictionary[key] = value
         listen.close()
-        self.assertEqual(dictionary, utils.scan('127.0.0.1', 50000,50000))
+        self.assertEqual(dictionary, utils.scan('127.0.0.1', 50000, 50000))
 
     def test_all_port_open(self):
 
@@ -61,9 +61,9 @@ class TestUtilsMethods(unittest.TestCase):
         for port in range(50000, 50013 + 1):
             listen = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             listen.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-            listen.bind(('127.0.0.1',port))
+            listen.bind(('127.0.0.1', 50010))
             listen.listen(1)
-            socket.setdefaulttimeout(1) 
+            socket.setdefaulttimeout(1)
             result = listen.connect_ex(('127.0.0.1', port))
             if result == 0:
                 key = port
@@ -82,7 +82,7 @@ class TestUtilsMethods(unittest.TestCase):
         dictionary = {}
         for port in range(50000, 50020 + 1):
             listen = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            socket.setdefaulttimeout(1) 
+            socket.setdefaulttimeout(1)
             result = listen.connect_ex(('127.0.0.1', port))
             if result == 0:
                 key = port
@@ -102,9 +102,9 @@ class TestUtilsMethods(unittest.TestCase):
         for port in range(50000, 50020 + 1):
             listen = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             listen.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-            listen.bind(('127.0.0.1',50018))
+            listen.bind(('127.0.0.1', 50018))
             listen.listen(1)
-            socket.setdefaulttimeout(1) 
+            socket.setdefaulttimeout(1)
             result = listen.connect_ex(('127.0.0.1', port))
             if result == 0:
                 key = port
