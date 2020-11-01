@@ -5,7 +5,7 @@ Create test test class to test scan port if crrectly.
 """
 
 __author__ = "Jinxiang Zeng"
-__version__ = "Fall 2020"
+__version__ = "Fall cs3280"
 
 import unittest
 import socket
